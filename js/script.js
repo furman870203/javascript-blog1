@@ -28,6 +28,36 @@ function titleClickHandler(event){
     /* add class 'active' to the correct article */
     targetArticle.classList.add('active');
   }
+
+  const optArticleSelector = '.post',
+  optTitleSelector = '.post-title',
+  optTitleListSelector = '.titles';
+
+function generateTitleLinks(){
+
+  /* remove contents of titleList */
+    const titleList = document.querySelector(optArticleSelector);
+    titleList.innerHTML = '';
+  /* for each article */
+    const articles = document.querySelectorAll(optArticleSelector);
+    for(let article of articles) {
+
+    
+    /* get the article id */
+    const articleId = article.getAttribute('id');
+    /* find the title element */
+    const articleTitle = article.querySelector(optTitleSelector).innerHTML;
+    /* get the title from the title element */
+
+    /* create HTML of the link */
+    const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+    console.log(linkHTML);
+    /* insert link into titleList */
+    titleList.innerHTML = titleList.innerHTML + linkHTML;
+    }
+}
+
+generateTitleLinks();
   
   const links = document.querySelectorAll('.titles a');
   
