@@ -31,12 +31,14 @@ function titleClickHandler(event){
 const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
   optTitleListSelector = '.titles',
-  optArticleTagsSelector = '.post-tags .list';
+  optArticleTagsSelector = '.post-tags .list',
+  optArticleAuthorSelector = '.post-author';
+  
 
 function generateTitleLinks(customSelector = ''){
-
+console.log(customSelector);
   /* remove contents of titleList */
-  const titleList = document.querySelector(optTitleListSelector + customSelector);
+  const titleList = document.querySelector(optArticleSelector + customSelector);
   titleList.innerHTML = '';
   
   /* for each article */
@@ -77,7 +79,7 @@ function generateTags(){
     /* START LOOP: for each tag */
     for(let tag of articleTagsArray) {
     /* generate HTML of the link */
-      const tagHTML = '<li><a href="#' + articleTagsArray + '"><span>' + tag + '</span></a></li>';
+      const tagHTML = '<li><a href="#tag-' + tag + '"><span>' + tag + '</span></a></li>';
       /* add generated code to html variable */
       html = html + tagHTML;
       /* END LOOP: for each tag */
@@ -95,7 +97,8 @@ function tagClickHandler(event){
   /* make new constant named "clickedElement" and give it the value of "this" */
   const clickedElement = this;
   /* make a new constant "href" and read the attribute "href" of the clicked element */
-  const href = clickedElement.querySelectorAll('href');
+  const href = clickedElement.getAttribute('href');
+  
   /* make a new constant "tag" and extract tag from the "href" constant */
   const tag = href.replace('#tag-', '');
   /* find all tag links with class active */
@@ -126,8 +129,22 @@ function addClickListenersToTags(){
     /* add tagClickHandler as event listener for that link */
     linkTag.addEventListener('click', tagClickHandler);
     /* END LOOP: for each link */
+
   }
 }
+
+function generateAuthors(){
+const articles = document.querySelectorAll('article');
+for(let article of articles) {
+  const author = article.getAttribute('data-author');
+  const authorHTML = '<li><a href="#' + author + '"><span>' + author + '</span></a></li>';
+  article.querySelector('.post-author').innerHTML = authorHTML;
+}
+
+
+
+}
+generateAuthors();
   
 addClickListenersToTags();
   
