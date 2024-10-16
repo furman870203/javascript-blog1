@@ -38,18 +38,19 @@ const optArticleSelector = '.post',
 function generateTitleLinks(customSelector = ''){
 console.log(customSelector);
   /* remove contents of titleList */
-  const titleList = document.querySelector(optArticleSelector + customSelector);
+  const titleList = document.querySelector(optTitleListSelector);
   titleList.innerHTML = '';
   
   /* for each article */
-  const articles = document.querySelectorAll(optArticleSelector);
+  const articles = document.querySelectorAll(optArticleSelector + customSelector);
   for(let article of articles) {
 
     
     /* get the article id */
     const articleId = article.getAttribute('id');
     /* find the title element */
-    const articleTitle = article.querySelector(optTitleSelector).innerHTML;   /* get the title from the title element */
+    /* get the title from the title element */
+    const articleTitle = article.querySelector(optTitleSelector).innerHTML;
 
     /* create HTML of the link */
     const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
@@ -138,7 +139,7 @@ const articles = document.querySelectorAll('article');
 for(let article of articles) {
   const author = article.getAttribute('data-author');
   const authorHTML = '<li><a href="#' + author + '"><span>' + author + '</span></a></li>';
-  article.querySelector('.post-author').innerHTML = authorHTML;
+  article.querySelector(optArticleAuthorSelector).innerHTML = authorHTML;
 }
 
 
