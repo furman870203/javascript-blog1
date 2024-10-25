@@ -119,3 +119,38 @@ body {
     margin: 0 10px 0 0;
   }
 }
+
+.tag-size-1 {
+  font-size: 15px;
+  color: #1dd1a1;
+  padding: 10px;
+}
+
+.tag-size-2 {
+  font-size: 25px;
+  color:#FD7272;
+  padding: 10px;
+}
+
+.tag-size-3 {
+  font-size: 30px;
+  color: #222f3e;
+  padding: 10px;
+}
+
+.tag-size-4 {
+  font-size: 35px;
+  color: #48dbfb;
+  padding: 10px;
+}
+
+.tag-size-5 {
+  font-size: 40px;
+  color: red;
+  padding: 10px;
+}
+
+.list.tags {
+  display: flex;
+  flex-wrap: wrap;
+}
