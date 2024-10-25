@@ -202,22 +202,26 @@ function addClickListenersToTags() {
 }
 
 function generateAuthors() {
-  const authorList = document.querySelectorAll(optAuthorListSelector);
+  
   let allAuthors = {};
 
   const articles = document.querySelectorAll('article');
   for (let article of articles) {
     const author = article.getAttribute('data-author');
-    const authorHTML = '<li><a href="#' + author + '"><span>' + author + '</span></a></li>';
+    allAuthors[author] = author;
+    const authorHTML = '<li><a href="#author-' + author + '"><span>' + author + '</span></a></li>';
     article.querySelector(optArticleAuthorSelector).innerHTML = authorHTML;
   }
-  
+  const authorList = document.querySelectorAll(optAuthorListSelector);
+  console.log(authorList);
   let allAuthorsHTML = '';
   for(let author in allAuthors) {
-    const authorLinkHTML = '<li><a href="#' + author + '"><span>' + author + '</span></a></li>';
+    
+    const authorLinkHTML = '<li><a href="#author-' + author + '"><span>' + author + '</span></a></li>';
     allAuthorsHTML += authorLinkHTML;
     
   }
+  console.log(authorList);
   authorList.innerHTML = allAuthorsHTML;
 }
 generateAuthors();
